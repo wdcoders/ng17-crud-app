@@ -30,29 +30,33 @@
       </tr>
     </thead>
     <tbody>
+      @for (item of employees; track $index) {
       <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
         <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-          John Martin
+          {{item.name}}
         </th>
         <td class="px-6 py-4">
-          john&#64;gmail.com
+          {{item.email}}
         </td>
         <td class="px-6 py-4">
-          5489562356
+          {{item.mobile}}
         </td>
         <td class="px-6 py-4">
-          27-10-1992
+          {{item.dob}}
         </td>
         <td class="px-6 py-4 text-right">
-          <button type="button" class="font-medium text-blue-600 dark:text-blue-500 hover:underline mr-4">Edit</button>
-          <button type="button" class="font-medium text-red-600 dark:text-red-500 hover:underline">Delete</button>
+          <button type="button" (click)="item._id && loadEmployee(item)"
+            class="font-medium text-blue-600 dark:text-blue-500 hover:underline mr-4">Edit</button>
+          <button type="button" (click)="item._id && deleteEmployee(item._id)"
+            class="font-medium text-red-600 dark:text-red-500 hover:underline">Delete</button>
         </td>
       </tr>
+      }
     </tbody>
   </table>
 </div>
 
 
 <app-model [isOpen]="isModelOpen" (closeModel)="closeModel()">
-  <app-employee-form (onCloseModel)="closeModel()"></app-employee-form>
+  <app-employee-form (onCloseModel)="closeModel()" [data]="employee"></app-employee-form>
 </app-model>

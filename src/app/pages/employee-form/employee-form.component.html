@@ -1,24 +1,39 @@
 <h5 class="mb-5 text-lg font-bold tracking-tight text-gray-900 dark:text-white ">Employee Details</h5>
-<form class="w-full" autocomplete="off" novalidate>
+<form [formGroup]="employeeForm" class="w-full" (ngSubmit)="onSubmit()" novalidate>
   <div class="mb-5">
     <label for="name" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Name</label>
-    <input type="text" id="name" class="form-control" placeholder="Name">
+    <input type="text" id="name" class="form-control" placeholder="Name" formControlName="name">
+    @if (employeeForm.get('name')?.hasError('required') && employeeForm.get('name')?.touched) {
+    <div class="form-error">Name is required</div>
+    }
   </div>
   <div class="mb-5">
     <label for="email" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Email Address</label>
-    <input type="email" id="email" class="form-control" placeholder="Email Address">
+    <input type="email" id="email" class="form-control" placeholder="Email Address" formControlName="email">
+    @if (employeeForm.get('email')?.hasError('required') && employeeForm.get('email')?.touched) {
+    <div class="form-error">Email is required</div>
+    }
   </div>
   <div class="mb-5">
     <label for="mobile" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Mobile</label>
-    <input type="text" id="mobile" class="form-control" placeholder="Mobile">
+    <input type="text" id="mobile" class="form-control" placeholder="Mobile" formControlName="mobile">
+    @if (employeeForm.get('mobile')?.hasError('required') && employeeForm.get('mobile')?.touched) {
+    <div class="form-error">Mobile is required</div>
+    }
   </div>
   <div class="mb-5">
     <label for="dob" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Date of Birth</label>
-    <input type="date" id="dob" class="form-control" placeholder="">
+    <input type="date" id="dob" class="form-control" placeholder="" formControlName="dob">
+    @if (employeeForm.get('dob')?.hasError('required') && employeeForm.get('dob')?.touched) {
+    <div class="form-error">Date of Birth is required</div>
+    }
   </div>
   <div class="mb-5">
     <label for="doj" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Date of Joining</label>
-    <input type="date" id="doj" class="form-control" placeholder="">
+    <input type="date" id="doj" class="form-control" placeholder="" formControlName="doj">
+    @if (employeeForm.get('doj')?.hasError('required') && employeeForm.get('doj')?.touched) {
+    <div class="form-error">Date of Joining is required</div>
+    }
   </div>
   <button type="submit"
     class="text-white bg-blue-700 hover:bg-blue-800 font-medium rounded-lg w-full sm:w-auto px-5 py-2.5 text-center">Submit</button>
